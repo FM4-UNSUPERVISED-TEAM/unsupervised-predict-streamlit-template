@@ -40,6 +40,7 @@ import numpy as np
 import seaborn as sns
 import re
 from nlppreprocess import NLP
+import matplotlib.pyplot as plt
 nlp = NLP()
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
@@ -290,7 +291,7 @@ def main():
     if page_selection == "EDA":
         st.title("Exploratory Data Analysis")
         
-        visual_options = ["EDA", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget"]
+        visual_options = ["EDA", "Raw Data", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget"]
         visual_options_selection = st.selectbox("Which visual category would you like to choose?",
 		visual_options)
         
@@ -332,7 +333,7 @@ def main():
                 st.image('https://i.imgur.com/fPJwftY.png', width=700)
                 st.write("This is how the Word Cloud Visual Above Was Generated.")
                 st.write("1) The 'stopword' variable is a list of words that will be excluded from the word cloud. In this case, the stopwords are set to ['no genres', 'no', 'genres', 'genre', 'listed'].")
-                
+                st.write("WordCloud visualization showed the most prevalent genres (comedy and drama) and the effect. This provides a better idea of potential biases in the training set so we can eliminate them during our model constructing stage.")
                 
                 
             if bar_nav == 'Top 10 Genres':
@@ -393,14 +394,14 @@ def main():
                 st.write("We Investigate The Top Rated Movies From The Dataset")
                 st.image('https://i.imgur.com/woNxKn2.png', width=700)
                 st.write("Insights From The Figure.")
-                st.write("From the above plot we observe that the most poular movie of all time is Shawshank Redemption that was released in 1994 and that has an average rating of approximately 4.42.")
+                st.write("To get a sense of the distribution of movie ratings a bar chart was made to reveal that the ratings are skewed to left and have a mode of 4.")
 
             if bar_nav == 'Tob Rated Movies':
                 st.subheader('Tob Rated Movies')
                 st.write("We investigate how ratings, which range from 0 to 5, incremented by 0.5, are distributed in the movies data. So we will analyze the movie ratings based on how users rate different movies from 0 to 5.")
                 st.image('https://i.imgur.com/DkCDJSr.png', width=700)
                 st.write("Insights From The Figure.")
-                st.write("From the figure above we observe that 4.0 is")
+                st.write("From the above plot we observe that the most poular movie of all time is Shawshank Redemption that was released in 1994 and that has an average rating of approximately 4.42.")
              
             if bar_nav == 'Number Of Ratings Per Movie':
                 st.subheader('Ratings Per Movie')
@@ -558,7 +559,85 @@ def main():
             if bar_nav == 'Top 20 Movies by Budget':
                 st.subheader('Top 20 Movies by Budget')
                 st.image('https://i.imgur.com/lAKh39D.png', width=700)
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------Raw Data----------------------------------------------------------------------------------
+        if visual_options_selection == "Raw Data":
+            st.title("Raw Data")
+            st.write("This page was designed to help data analysts to get a better understanding of the data. It focuses specifically on the movies and ratings datasets.")
+            st.header("The Movies dataset")
+            df = pd.read_csv('resources/data/movies.csv')
+            st.write("Displaying the first few entries in the movie dataset")
+            st.write(df)
+        
+            st.write("Displaying basic statistics about the movieId column.")
+            st.write(df.describe())
 
+            # show shape
+            if st.checkbox("Check to display the shape of the Movies Dataset"):
+                data_dim = st.radio("Show Dimensions By ", ("Rows", "Columns"))
+                if data_dim == 'Row':
+                    st.text("Number of Rows")
+                    st.write(df.shape[0])
+                elif data_dim == 'Columns':
+                    st.text("Number of Columns")
+                    st.write(df.shape[1])
+                else:
+                    st.write(df.shape[0])
+
+            if st.checkbox("Check to see specific columns"):
+                all_columns = df.columns.tolist()
+                selected_columns = st.multiselect("Select", all_columns)
+                new_df = df[selected_columns]
+                st.dataframe(new_df)
+
+            # Show values
+            if st.button("Display the amount of movies for each genre"):
+                st.text("The amount of movies by genre.")
+                st.write(df.iloc[:,-1].value_counts())
+
+        
+
+            df1 = pd.read_csv("resources/data/ratings.csv")
+            st.header("The Ratings (Train) dataset")
+            st.write("Displaying the first few entries in the ratings dataset")
+            st.write(df1)
+
+
+            if st.checkbox("Check to display the shape of the Ratings Dataset"):
+                data_dim1 = st.radio("Show Dimensions by ", ("Rows", "Columns"))
+                if data_dim1 == 'Rows':
+                    st.text("Number of Rows")
+                    st.write(df1.shape[0])
+                elif data_dim1 == 'Columns':
+                    st.text("Number of Columns")
+                    st.write(df1.shape[1])
+                else:
+                    st.write(df1.shape[0])
+
+            if st.checkbox("Check to see specific columns "):
+                all_columns = df1.columns.tolist()
+                selected_columns = st.multiselect("Select one or more columns to display", all_columns)
+                new_df = df1[selected_columns]
+                st.dataframe(new_df)
+
+            st.write("Displaying basic statistics of the Ratings dataset")
+            st.write(df1.describe())
+
+
+            st.write("Displaying the ratings distribution accross all users")
+            fig, ax = plt.subplots()
+            df1.hist(
+            bins=8,
+            column="rating",
+            grid=False,
+            figsize=(8, 8),
+            color="#86bf91",
+            zorder=2,
+            rwidth=0.9,
+            ax=ax,  
+            )
+            st.write(fig)
+        
 
 #---------------------------------------TSHEPO'S END OF EDITION---------------------------------------------------------------------------------------
 
