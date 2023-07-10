@@ -179,6 +179,15 @@ def main():
     if page_selection == "Contact Us":
         st.header("Get In Touch With Us!")
         
+        col1, col2, col3 = st.columns(3)
+        col1.header('Location')
+        col1.write('523 De Kock ST, Pretoria 2001')
+        col2.header('Telephone')
+        col2.write('(+27) 727910473')
+        col3.header('Email')
+        col3.write('tshepoelifa238@gmail.com')
+        
+        
         # ---- CONTACT ----
         with st.container():
             st.write("---")
@@ -212,6 +221,9 @@ def main():
 
 # ----------------------------------------------ABOUT US-------------------------------------------------------------------------------
     if page_selection == "About Us":
+        
+        st.title("About Us")
+        
         st.title("Meet the Synergy Solutions Team")
         st.info("The Team Behind This Robust Work")
         
