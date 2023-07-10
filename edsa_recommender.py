@@ -58,7 +58,7 @@ from recommenders.content_based import content_model
 title_list = load_movie_titles('resources/data/movies.csv')
 
 #-------------------------------------------------------START OF TSHEPO's ADDITION-------------------------------------------------------------------
-st.set_page_config(page_title="Synergy Solutions", page_icon="resources/imgs/EDSA_logo.png")
+st.set_page_config(page_title="Synergy Solutions", page_icon="resources/imgs/Company_Logo.png")
 
 #theme.primaryColor
 primary_clr = st.get_option("theme.primaryColor")
