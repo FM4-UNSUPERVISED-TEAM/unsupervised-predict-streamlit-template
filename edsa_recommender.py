@@ -160,11 +160,11 @@ def main():
     if page_selection == "Insights":
         st.title("Exploratory Data Analysis")
         
-        visual_options = ["EDA", "Raw Data", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget"]
+        visual_options = ["Insights", "Raw Data", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget"]
         visual_options_selection = st.selectbox("Which visual category would you like to choose?",
 		visual_options)
         
-        if visual_options_selection == "EDA":
+        if visual_options_selection == "Insights":
             st_lottie(
 				EDA,
 				speed=1,
