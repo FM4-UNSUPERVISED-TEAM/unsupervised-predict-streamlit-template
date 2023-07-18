@@ -147,7 +147,6 @@ def main():
                     # with hc.HyLoader('Recommending movies you will like...\n',hc.Loaders.standard_loaders,index=[5,0,3]):
                         top_recommendations = content_model(movie_list=fav_movies,
                                                             top_n=10)
-                        time.sleep(5)
                     st.title("We think you'll like:")
                     for i,j in enumerate(top_recommendations):
                         st.subheader(str(i+1)+'. '+j)
@@ -163,7 +162,6 @@ def main():
                     # with hc.HyLoader('Recommending movies you will like...\n',hc.Loaders.standard_loaders,index=[5,0,3]):
                         top_recommendations = collab_model(movie_list=fav_movies,
                                                            top_n=10)
-                        time.sleep(5)
                     st.title("We think you'll like:")
                     for i,j in enumerate(top_recommendations):
                         st.subheader(str(i+1)+'. '+j)
@@ -181,6 +179,11 @@ def main():
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
+# ----------------------------------------------HOME PAGE---------------------------------------------------------------------------------------------------
+    if page_selection == 'Home':
+        # Header contents
+        st.write('# Welcome to MovieWhiz')
+        st.image('resources/imgs/1MovieWhiz.png')
 
 # ----------------------------------------------EDA SECTION---------------------------------------------------------------------------------------------------
    	# Building out the Visualizations page
