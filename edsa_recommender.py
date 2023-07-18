@@ -36,12 +36,16 @@ import requests	#pip install requests
 from streamlit_option_menu import option_menu  #pip install streamlit-option-menu 
 import json
 import hydralit_components as hc
+import datetime
+import time
 
 # Data handling dependencies
 import pandas as pd
 import numpy as np
 import seaborn as sns
+from sympy import im
 import re
+import csv
 from nlppreprocess import NLP
 import matplotlib.pyplot as plt
 nlp = NLP()
@@ -51,6 +55,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from scipy import sparse
+from streamlit_player import st_player
 
 # Custom Libraries
 from utils.data_loader import load_movie_titles
@@ -59,9 +64,23 @@ from recommenders.content_based import content_model
 
 #---------------------------------------Loading Data---------------------------------------------------------------------------------------------------------------
 # Data Loading
-title_list = load_movie_titles('resources/data/movies.csv')
+title_list = load_movie_titles('https://raw.githubusercontent.com/FM4-UNSUPERVISED-TEAM/Data/main/movies.csv')
 
-st.set_page_config(page_icon='resources/imgs/MovieWhiz1.png', page_title= 'MovieWhiz', layout='wide', initial_sidebar_state='auto')
+st.set_page_config(page_icon='resources/imgs/MovieWhiz.png', page_title= 'MovieWhiz', layout='wide',initial_sidebar_state='auto')
+
+over_theme = {'txc_inactive': '#FFFFFF'}
+
+menu_data = [
+        {'icon':'Recommender System','label':"Recommender System"},
+		{'id':'Solution Overview', 'icon': "far fa-clone", 'label':"Solution Overview"},
+        {'id':'Trailers','icon':'fas fa-film','label':'Trailers'},
+        {'id':'Insights', 'icon': "far fa-chart-bar", 'label':"Insights"},#no tooltip message
+		{'id': 'About Us' , 'icon': "far fa-copy", 'label':"About Us"},
+		{'id': 'Contact Us',  'icon': "far fa-address-book ", 'label':"Contact Us"},
+]
+
+menu_id = hc.nav_bar(menu_definition=menu_data,home_name='Home',override_theme=over_theme,
+                      hide_streamlit_markers=False,sticky_nav=True, sticky_mode='pinned')
 
 # Use local CSS
 def local_css(file_name):
@@ -87,6 +106,8 @@ Actors = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_51ja6AIG9
 Timer = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_ya9vcglm.json")
 Budget = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_l5o1uey5.json")
 
+local_css("resources/style/style.css")
+
 
 #----------------------------------------------------------App Function--------------------------------------------------------------------------------------------
 # App declaration
@@ -94,16 +115,17 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System", "Insights", "Solution Overview"]
+    # page_options = ["Recommender System", "Insights", "Solution Overview"]
+    page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
-    page_selection = st.sidebar.selectbox("Choose Option", page_options)
+    # page_selection = st.sidebar.selectbox("Choose Option", page_options)
     if page_selection == "Recommender System":
         # Header contents
         st.write('# Movie Recommender Engine')
-        st.write('### EXPLORE Data Science Academy Unsupervised Predict')
+        # st.write('### EXPLORE Data Science Academy Unsupervised Predict')
         st.image('resources/imgs/Image_header.png',use_column_width=True)
         # Recommender System algorithm selection
         sys = st.radio("Select an algorithm",
@@ -122,8 +144,10 @@ def main():
             if st.button("Recommend"):
                 try:
                     with st.spinner('Crunching the numbers...'):
+                    # with hc.HyLoader('Recommending movies you will like...\n',hc.Loaders.standard_loaders,index=[5,0,3]):
                         top_recommendations = content_model(movie_list=fav_movies,
                                                             top_n=10)
+                        time.sleep(5)
                     st.title("We think you'll like:")
                     for i,j in enumerate(top_recommendations):
                         st.subheader(str(i+1)+'. '+j)
@@ -136,8 +160,10 @@ def main():
             if st.button("Recommend"):
                 try:
                     with st.spinner('Crunching the numbers...'):
+                    # with hc.HyLoader('Recommending movies you will like...\n',hc.Loaders.standard_loaders,index=[5,0,3]):
                         top_recommendations = collab_model(movie_list=fav_movies,
                                                            top_n=10)
+                        time.sleep(5)
                     st.title("We think you'll like:")
                     for i,j in enumerate(top_recommendations):
                         st.subheader(str(i+1)+'. '+j)
@@ -155,6 +181,7 @@ def main():
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
+
 # ----------------------------------------------EDA SECTION---------------------------------------------------------------------------------------------------
    	# Building out the Visualizations page
     if page_selection == "Insights":
