@@ -175,10 +175,66 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
+        st.write("Describing our winning approach on this page")
 
+        st.markdown("""A `Recommender System (RecSys)` have become a key component in many online services, such as e-commerce, social media, news service, 
+        or online video streaming. However with their growth in importance,  the growth in scale of industry datasets, and more sophisticated models, the bar
+        has been raised for computational resources required for recommendation systems. This is no doubt one of the most obvious ways in which companies are enhancing the user experience
+        in the platform that they provide their customers services. Companies Like Facebook, Netflix, Amazon, and Youtube are using RecSys to do so.
+        RecSys are trained to understand the preferences, previous decisions, and characteristics of people and products, using data gathered about their interactions, which include
+        impressions, clicks, likes, and purchases. Recommender systems help solve information overload by helping users find relevant products from a wide range of selections by 
+        providing personalized content.  Because of their capability to predict consumer interests and desires on a highly personalized level, recommender systems are a favorite
+        with content and product providers because they drive consumers to just about any product or service that interests them, from books to videos to health classes to clothing.
+        More likely, these companies and other companies that are implementing the RecSys are doing so in introducing machine learning into these
+        companies. It is therefore important for aspiring Data Scientists to develop skills in such areas. At `Explore Data Science Academy (EDSA)`,
+        our team was given a task to build a RecSys. There are three available approaches to building a recommender system. As part of this project our
+        team explored two of these which were the `Content Based Filtering` and `Collaborative Based Filtering` algorithm.
+
+            """)
+        RecSys=Image.open("resources/imgs/RecSys.png")
+        st.image(RecSys, use_column_width=False)
+
+        # Collaborative Based Filtering
+        st.subheader("**Collaborative Filtering**")
+        st.markdown("""Collaborative filtering algorithms recommend items (this is the filtering part) based on preference information from many users (this is the collaborative part).
+        This approach uses similarity of user preference behavior,  given previous interactions between users and items, recommender algorithms learn to predict future interaction. 
+        These recommender systems build a model from a user’s past behavior, such as items purchased previously or ratings given to those items and similar decisions by other users.
+        The idea is that if some people have made similar decisions and purchases in the past, like a movie choice, then there is a high probability they will agree on additional future selections.
+        For example, if a collaborative filtering recommender knows you and another user share similar tastes in movies, it might recommend a movie to you that it knows this other user already likes. """)
+
+        ColFil=Image.open("resources/imgs/ColFil2.png")
+        st.image(ColFil, use_column_width=False)
+        
+        # Content Based Filtering
+        st.subheader("**Content Based Filtering**")
+        st.markdown("""Content filtering, by contrast, uses the attributes or features of an item  (this is the content part) to recommend other items similar to the user’s preferences. This approach is 
+        based on similarity of items and user features,  given information about a user and items they have interacted with, (e.g. a user’s demographics, like age or gender, the category of a restaurant’s 
+        cuisine, the average review for a movie), model the likelihood of a new interaction.  For example, if a content filtering recommender sees you liked the movies “You’ve Got Mail” and “Sleepless in 
+        Seattle,” it might recommend another movie to you with the same genres and/or cast, such as “Joe Versus the Volcano.”""")
+
+        ConFil=Image.open("resources/imgs/ConFil2.png")
+        st.image(ConFil, use_column_width=False)
+
+        st.subheader("**Building the Recommender Sytem**")
+        st.markdown("""The recommender system application was built mainly for consumers to have a personalized experience of watching movies that they are
+        likely to enjoy based on the three movies they have selected. The figure below shows the recommender app that uses both content based filtering and also collaborative based filtering. 
+        Our app is similar to it in a sence that it uses the same algorithms to make predictions but it was built very different from it. From the 'recommender system' page, three movies are required as input in order to make recommendations based on which movie you have inputed in the seelction box.""")
+
+
+        image=Image.open("resources/imgs/PickAMovie.png")
+        st.image(image, use_column_width=False)
+
+        st.markdown("""In building this web application, a couple of steps were followed starting with forking the repository from Github given by EDSA,
+         using the dataset provided and obtained from the repository to build the recommender system. Following that was working with the script of the
+         collaborative filtering algorithm by editing the code to obtain a movie prediction when using the main script run with streamlit. The `about
+         us` has a link to the Github repo for if the intention is to attain better grasp on how the code works using python code.
+            """)
+
+        st.markdown("""This recommender engine is considered to be user friendly and one can easily use it to get movies that others have enjoyed and are
+         related to the movies that they enjoy. This is done by only selecting three movies and press `Recommend` and 10 movies will be suggested. """ )
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
+
 # ----------------------------------------------HOME PAGE---------------------------------------------------------------------------------------------------
     if page_selection == 'Home':
         # Header contents
