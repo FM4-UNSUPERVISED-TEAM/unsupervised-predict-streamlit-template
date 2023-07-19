@@ -61,6 +61,7 @@ from streamlit_player import st_player
 from utils.data_loader import load_movie_titles
 from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
+# import functions.comments as coms
 
 #---------------------------------------Loading Data---------------------------------------------------------------------------------------------------------------
 # Data Loading
@@ -70,17 +71,17 @@ st.set_page_config(page_icon='resources/imgs/MovieWhiz.png', page_title= 'MovieW
 
 over_theme = {'txc_inactive': '#FFFFFF'}
 
-menu_data = [
-        {'icon':'Recommender System','label':"Recommender System"},
-		{'id':'Solution Overview', 'icon': "far fa-clone", 'label':"Solution Overview"},
-        {'id':'Trailers','icon':'fas fa-film','label':'Trailers'},
-        {'id':'Insights', 'icon': "far fa-chart-bar", 'label':"Insights"},#no tooltip message
-		{'id': 'About Us' , 'icon': "far fa-copy", 'label':"About Us"},
-		{'id': 'Contact Us',  'icon': "far fa-address-book ", 'label':"Contact Us"},
-]
+# menu_data = [
+#         {'icon':'Recommender System','label':"Recommender System"},
+# 		{'id':'Solution Overview', 'icon': "far fa-clone", 'label':"Solution Overview"},
+#         {'id':'Trailers','icon':'fas fa-film','label':'Trailers'},
+#         {'id':'Insights', 'icon': "far fa-chart-bar", 'label':"Insights"},#no tooltip message
+# 		{'id': 'About Us' , 'icon': "far fa-copy", 'label':"About Us"},
+# 		{'id': 'Contact Us',  'icon': "far fa-address-book ", 'label':"Contact Us"},
+# ]
 
-menu_id = hc.nav_bar(menu_definition=menu_data,home_name='Home',override_theme=over_theme,
-                      hide_streamlit_markers=False,sticky_nav=True, sticky_mode='pinned')
+# menu_id = hc.nav_bar(menu_definition=menu_data,home_name='Home',override_theme=over_theme,
+#                       hide_streamlit_markers=False,sticky_nav=True, sticky_mode='pinned')
 
 # Use local CSS
 def local_css(file_name):
@@ -115,13 +116,13 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    # page_options = ["Recommender System", "Insights", "Solution Overview"]
-    page_selection = f'{menu_id}'
+    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers"]
+    # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
-    # page_selection = st.sidebar.selectbox("Choose Option", page_options)
+    page_selection = st.sidebar.selectbox("Choose Option", page_options)
     if page_selection == "Recommender System":
         # Header contents
         st.write('# Movie Recommender Engine')
@@ -593,6 +594,44 @@ def main():
             ax=ax,  
             )
             st.write(fig)
+
+# ----------------------------------------------trailers---------------------------------------------------------------------------------------------------
+    
+    # embed a youtube video
+    if page_selection == "Trailers":
+
+        year = st.slider('Select Release Year Period', 2023, 2018, 2023)
+        st.write('You selected movies released between', str(2018), 'and', str(year))
+        if year == 2023:
+            with st.expander('Top 10 Best Movies 2023'):
+                st_player('https://www.youtube.com/watch?v=YQZJinEtFlM')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2023')
+        if year >= 2022:
+            with st.expander('Top 10 Best Movies 2022'):
+                st_player('https://www.youtube.com/watch?v=emrUk0cW3O4')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2022')
+        if year >= 2021:
+            with st.expander('Top 10 Best Movies 2021'):
+                st_player('https://www.youtube.com/watch?v=_wRoljeeF5k')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2021')
+        if year >= 2020:
+            with st.expander('Top 10 Best Movies 2020'):
+                st_player('https://www.youtube.com/watch?v=K7AHRF9X1i8')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2020')
+        if year >= 2019:
+            with st.expander('Top 10 Best Movies 2019'):
+                st_player('https://youtu.be/48NL3N6KMFo?t=9')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2019')
+        if year >= 2018:
+            with st.expander('Top 10 Best Movies 2018'):
+                st_player('https://youtu.be/FkUtWUy77fQ?t=9')
+                st.write('**Which movies did you like?**')
+                # coms.commenter('Top 10 Best Movies 2018')
         
 
 #---------------------------------------TSHEPO'S END OF EDA Section---------------------------------------------------------------------------------------
