@@ -98,6 +98,8 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
+Contact_Us = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_ebqz3ltq.json")
+Meet_Team = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_tylfbkf3.json")
 EDA = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_zcb74lq5.json")
 Ratings = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_qq6gioyz.json")
 Users = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_bo8vqwyw.json")
@@ -116,7 +118,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers"]
+    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers","Contact Us"]
     # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
@@ -632,7 +634,50 @@ def main():
                 st_player('https://youtu.be/FkUtWUy77fQ?t=9')
                 st.write('**Which movies did you like?**')
                 # coms.commenter('Top 10 Best Movies 2018')
+
+    #-----------------------------------------------CONTACT US----------------------------------------------------------------------------
+    if page_selection == 'Contact Us':
+        st.header("Get In Touch With Us!")
         
+        col1, col2, col3 = st.columns(3)
+        col1.header('Location')
+        col1.write('523 De Kock ST, Pretoria 2001')
+        col2.header('Telephone')
+        col2.write('(+27) 727910473')
+        col3.header('Email')
+        col3.write('tshepoelifa238@gmail.com')
+        
+        
+        # ---- CONTACT ----
+        with st.container():
+            st.write("---")
+            st.write("##")
+
+        # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
+        contact_form = """
+        <form action="https://formsubmit.co/tshepoelifa238@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Your message here" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        """
+        left_column, right_column = st.columns(2)
+        with left_column:
+            st.markdown(contact_form, unsafe_allow_html=True)
+        with right_column:
+            st_lottie(
+				Contact_Us,
+				speed=1,
+				reverse=False,
+				loop=True,
+				quality="low",
+				#renderer="svg",
+				height=None,
+				width=None,
+				key=None,
+			)    
 
 #---------------------------------------TSHEPO'S END OF EDA Section---------------------------------------------------------------------------------------
 
