@@ -118,7 +118,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us"]
+    page_options = ["Home", "Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us"]
     # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
@@ -181,7 +181,7 @@ def main():
         st.title("Solution Overview")
         st.write("Describing our winning approach on this page")
 
-        st.markdown("""A `Recommender System (RecSys)` have become a key component in many online services, such as e-commerce, social media, news service, 
+        st.markdown("""A Recommender System (RecSys) have become a key component in many online services, such as e-commerce, social media, news service, 
         or online video streaming. However with their growth in importance,  the growth in scale of industry datasets, and more sophisticated models, the bar
         has been raised for computational resources required for recommendation systems. This is no doubt one of the most obvious ways in which companies are enhancing the user experience
         in the platform that they provide their customers services. Companies Like Facebook, Netflix, Amazon, and Youtube are using RecSys to do so.
@@ -190,9 +190,9 @@ def main():
         providing personalized content.  Because of their capability to predict consumer interests and desires on a highly personalized level, recommender systems are a favorite
         with content and product providers because they drive consumers to just about any product or service that interests them, from books to videos to health classes to clothing.
         More likely, these companies and other companies that are implementing the RecSys are doing so in introducing machine learning into these
-        companies. It is therefore important for aspiring Data Scientists to develop skills in such areas. At `Explore Data Science Academy (EDSA)`,
+        companies. It is therefore important for aspiring Data Scientists to develop skills in such areas. At Explore Data Science Academy (EDSA),
         our team was given a task to build a RecSys. There are three available approaches to building a recommender system. As part of this project our
-        team explored two of these which were the `Content Based Filtering` and `Collaborative Based Filtering` algorithm.
+        team explored two of these which were the Content Based Filtering and Collaborative Based Filtering algorithm.
 
             """)
         RecSys=Image.open("resources/imgs/RecSys.png")
@@ -230,12 +230,12 @@ def main():
 
         st.markdown("""In building this web application, a couple of steps were followed starting with forking the repository from Github given by EDSA,
          using the dataset provided and obtained from the repository to build the recommender system. Following that was working with the script of the
-         collaborative filtering algorithm by editing the code to obtain a movie prediction when using the main script run with streamlit. The `about
-         us` has a link to the Github repo for if the intention is to attain better grasp on how the code works using python code.
+         collaborative filtering algorithm by editing the code to obtain a movie prediction when using the main script run with streamlit. The about
+         us has a link to the Github repo for if the intention is to attain better grasp on how the code works using python code.
             """)
 
         st.markdown("""This recommender engine is considered to be user friendly and one can easily use it to get movies that others have enjoyed and are
-         related to the movies that they enjoy. This is done by only selecting three movies and press `Recommend` and 10 movies will be suggested. """ )
+         related to the movies that they enjoy. This is done by only selecting three movies and press 'Recommend' and 10 movies will be suggested. """ )
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
