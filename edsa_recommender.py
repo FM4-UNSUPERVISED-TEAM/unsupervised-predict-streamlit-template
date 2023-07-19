@@ -118,7 +118,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Home", "Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us"]
+    page_options = ["Home", "Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us",]
     # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
@@ -250,7 +250,7 @@ def main():
     if page_selection == "Insights":
         st.title("Exploratory Data Analysis")
         
-        visual_options = ["Insights", "Raw Data", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget"]
+        visual_options = ["Insights", "Raw Data", "Movies Genres", "Movies Ratings", "Top Users", "Movies Releases Per Year", "Contents of Movies Data", "Duration Of Movies", "Movies Budget", "Model Performance"]
         visual_options_selection = st.selectbox("Which visual category would you like to choose?",
 		visual_options)
         
@@ -267,13 +267,14 @@ def main():
 				key=None,
 			)
 #------------------------------------------------------------------------------------------------------------------------------------------------
-        if visual_options_selection == "F1_measure":
-            per_listed = ['F1_measure']
+        if visual_options_selection == "Model Performance":
+            per_listed = ['Model Performance']
             per_list = st.selectbox('I would like to view the...', per_listed)
             
-            if per_list == 'F1_measure':
-                st.subheader('F1 scores of the various models used')
-                st.image('https://imgur.com/o1zYqC8.png', width=730)
+            if per_list == 'Model Performance':
+                st.subheader('RMSE scores of the various models used')
+                st.image('https://i.imgur.com/8cHPlxM.png', width=730)
+                st.write("We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.78428  we can conclude that the algorithm implemented for our app is very good at movie recommendations.We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.78428  we can conclude that the algorithm implemented for our app is very good at movie recommendations.")
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 # The 'Movies Genres' Page   
@@ -282,17 +283,17 @@ def main():
             if visual_options_selection == "Movies Genres":
                 st.image('https://i.imgur.com/JXcldP7.jpg', width=600)
             
-            bar_nav_list = ['Most Common Genres (WordCloud)', 
+            bar_nav_list = ['Most Common Genres', 
 			'Top 10 Genres', 
 			]
             bar_nav = st.selectbox('I would like to view the...', bar_nav_list)
             
-            if bar_nav == 'Most Common Genres (WordCloud)':
+            if bar_nav == 'Most Common Genres':
                 st.subheader('The Most Popular And The Least Popular Genres')
-                st.image('https://i.imgur.com/fPJwftY.png', width=700)
-                st.write("This is how the Word Cloud Visual Above Was Generated.")
-                st.write("1) The 'stopword' variable is a list of words that will be excluded from the word cloud. In this case, the stopwords are set to ['no genres', 'no', 'genres', 'genre', 'listed'].")
-                st.write("WordCloud visualization showed the most prevalent genres (comedy and drama) and the effect. This provides a better idea of potential biases in the training set so we can eliminate them during our model constructing stage.")
+                st.image('https://i.imgur.com/TCmHONY.png', width=700)
+                #st.write("This is how the Word Visual Above Was Generated.")
+                #st.write("1) The 'stopword' variable is a list of words that will be excluded from the word cloud. In this case, the stopwords are set to ['no genres', 'no', 'genres', 'genre', 'listed'].")
+                #st.write("WordCloud visualization showed the most prevalent genres (comedy and drama) and the effect. This provides a better idea of potential biases in the training set so we can eliminate them during our model constructing stage.")
                 
                 
             if bar_nav == 'Top 10 Genres':
@@ -303,16 +304,16 @@ def main():
                 
                 if raw_common_words == 'Top 10 Most Common Genres':
                     st.subheader('Top 10 Genres by Volume')
-                    st.image('https://i.imgur.com/4CrcSii.png', width=700)
+                    st.image('https://i.imgur.com/5oZp0Wc.png', width=700)
                     #st.image("https://i.imgur.com/dTw9zLo.png", width=700)
                     
-                    left_column, right_column = st.columns(2)
-                    with left_column:
-                        st.write("Top 10")
-                        st.image('https://i.imgur.com/db3JHGR.png', width=300)
-                        with right_column:
-                            st.write("Bottom 10")
-                            st.image("https://i.imgur.com/rP6MptS.png", width=400)
+                    #left_column, right_column = st.columns(2)
+                    #with left_column:
+                        #st.write("Top 10")
+                        #st.image('https://i.imgur.com/db3JHGR.png', width=300)
+                        #with right_column:
+                            #st.write("Bottom 10")
+                            #st.image("https://i.imgur.com/rP6MptS.png", width=400)
                     
                     st.write('Interestingly, we observe that the top genres by volume only have one or two genre types, whereas the bottom genres consist of multiple genres. This is probably because these movies are a lot uncommon, resulting in a lower volume in the dataset.')
                 
@@ -353,8 +354,13 @@ def main():
                 st.write("We Investigate The Top Rated Movies From The Dataset")
                 st.image('https://i.imgur.com/woNxKn2.png', width=700)
                 st.write("Insights From The Figure.")
-                st.write("To get a sense of the distribution of movie ratings a bar chart was made to reveal that the ratings are skewed to left and have a mode of 4.")
-
+                st.write("To get a sense of the distribution of movie ratings a bar chart was made to reveal that the ratings are skewed to left and have a mode of 4. From the figure above we observe that 4.0 is the most commonly score (rated), with 26.5% of the movies in the dataframe assigned that score. This could be explained by the fact that users tend to only rate movies they enjoyed and avoid rating movies which they failed to enjoy. If a user does not enjoy a movie, it is unlikely that they will watch it up until the end and provide a rating. This is why 18% of all the rated movies have a score of less than 3. To support this idea, the most rated stars range from 3 to 5 while the less rated columns are from 0.5 to 2.5. This might also mean that people tend to rate a movie they have watched to the end and actually enjoyed it, rather than a movie which they didn't finish or enjoy.")
+                st.write("We also observe that half scores (0.5, 1.5, 2.5, 3.5 and 4.5) are less commonly used than integer score values. We do not know if this is because users prefer to rate movies with integer values or if it's because half scores were introduced after the original scoring system was already in use, leading to a decreased volume in a dataset with ratings from 1995.")
+                st.write("Observations:")
+                st.write("We can observe that a high percentage of our movies were rated above average i.e above 3. A low percentage were below 3")
+                st.write("Recommendations:")
+                st.write("Hence More movies are high quality perhaps people are watching movies that are recommended to them, either by their social groups or the recommender system itself.")
+                
             if bar_nav == 'Tob Rated Movies':
                 st.subheader('Tob Rated Movies')
                 st.write("We investigate how ratings, which range from 0 to 5, incremented by 0.5, are distributed in the movies data. So we will analyze the movie ratings based on how users rate different movies from 0 to 5.")
@@ -371,6 +377,7 @@ def main():
                 st.subheader('Ratings Per Day Of The Week')
                 st.write("The number of ratings for the movies recieved per day of the week. We first convert a timestamp column to datetime format, extract the days of the week from the timestamp, and create a bar plot of the total number of ratings for each day of the week")
                 st.image('https://i.imgur.com/GFf2hnM.png', width=700)
+                st.write("We observe that ")
                 
             if bar_nav == 'Ratings Per Movie Genres':
                 st.subheader('Ratings Per Movie Genres')
@@ -444,7 +451,10 @@ def main():
                     st.write("Examining the top users using the number of ratings dataset. We create a bar plot of the top 20 users by the number of ratings they have given.")
                     st.image('https://i.imgur.com/b9vljhW.png', width=700)
                     st.write("Generally, we observe that as the years progress, the amount of movies being released have significantly increased with the most movies released in 2015 and 2016. The number of movies being released per year have definitely shot up since the year 2000. We also observe that heading to the year of 2020, the number of movies released decreased significantly. This was during the year of COVID-19 which led to the total shutdown of the whole planet to quarantine. This proves significantly why there was a decrease in the number of movies released from the year 2018, 2019 and eventually going into the year of 2020.")
-
+                    st.write("Observations:")
+                    st.write("We observed a decrease in the movies published per year from 2000")
+                    st.write("Recommendations:")
+                    st.write("It is not clear what accounts for the decrease in movies published but possible reasons for this change include finacial crisis in 2000 and in 2009.")
 
         if visual_options_selection == 'Contents of Movies Data':
             st_lottie(
@@ -645,7 +655,7 @@ def main():
         col2.header('Telephone')
         col2.write('(+27) 727910473')
         col3.header('Email')
-        col3.write('simon.blanco@synergysoluion.com')
+        col3.write('simon.blanco@synergysolution.com')
         
         
         # ---- CONTACT ----
@@ -684,8 +694,14 @@ def main():
         
         st.title("About Us")
         
-        st.title("Meet the Synergy Solution Overviews Team")
+        st.markdown("We are a company that is dedicated to providing advanced analytics solutions. We aim not only to leverage advanced analytics, artificial intelligence, and machine learning, Our target is to also transform industries, drive innovation, and shape a data-driven future")
+        st.markdown("We are committed to staying at the forefront advancements in data science as we work closely with our clients, to understand their unique challenges and goals.")
+
+        
+        st.title("Meet The Synergy Solution Team")
         # st.aboutUs("The Team Behind This Robust Work")
+        st.markdown("We are a proud exceptional team that works together towards the company's shared goals. Our collective skills, commitment, and collaborative spirit is what drive us forward,as we ensure that we consistently deliver outstanding results to our valued clients.")
+
         
         st_lottie(
 				Meet_Team,
@@ -707,16 +723,17 @@ def main():
                 Nare = Image.open("resources/imgs/Nare.jpg")
                 st.image(Nare)
             with text_column:
-                st.subheader("Team leader and Project Manager: Nare Moloto")
-                st.write("Oversees the project, coordinates team members, and ensures project goals are achieved.")
+                st.subheader("Chief Executive Officer: Nare Moloto")
+                st.write("A visionary leader with extensive experience in the industry. She is passionate about driving the company's growth and ensuring its success. After the work dust has settled, she is a gymnastic coach.")
+                
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
                 Mkhanyisi = Image.open("resources/imgs/MK.jpg")
                 st.image(Mkhanyisi)
             with text_column:
-                st.subheader("Vice team leader and Data Analyst: Mkhanyisi Mlombile")
-                st.write("Assists the team leader, contributes to data analysis, and provides insights and recommendations.")
+                st.subheader("Data Scientist: Mkhanyisi Mlombile")
+                st.write("Mkhanyisi's passion for data science goes beyond his professional work. In his free time, he enjoys participating in Kaggle competitions, where he applies his skills to real-world datasets and collaborates with other data scientists worldwide. He is also an avid reader of data science literature and actively contributes to the data science community by sharing his knowledge. The same dedication he puts in when preparing his mouth watering dishes. A professional chef too.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
@@ -724,23 +741,23 @@ def main():
                 st.image(Ghaalib)
             with text_column:
                     st.subheader("Data Scientist: Ghaalib Van Der Ross")
-                    st.write("Applies advanced analytics, develops and trains machine learning models, and extracts insights for predictions.")
+                    st.write(" an accomplished data scientist with a passion for extracting insights from complex datasets. With a strong background in statistics, mathematics, and programming, he leverages his expertise to tackle challenging analytical problems. Our award winnng author who has won  over 20 writing competitions around the world.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
                 Edna = Image.open("resources/imgs/Edna.jpg")
                 st.image(Edna)
             with text_column:
-                st.subheader("Deadline Coordinator: Edna Kobo")
-                st.write("A professional responsible for managing and overseeing project deadlines to ensure timely completion of tasks and deliverables.")
+                st.subheader("Coordinator: Edna Kobo")
+                st.write("A talented and innovative designer who brings a creative flair to our team. With a keen eye for aesthetics and a deep understanding of user-centered design principles, she consistently delivers visually appealing and user-friendly designs. In her spare time she performs her magic through kids as a yoga instructor.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
                 Tshepo = Image.open("resources/imgs/Tshepo.jpg")
                 st.image(Tshepo)
                 with text_column:
-                    st.subheader("Data Integration Engineer: Tshepo Serumula")
-                    st.write("Specializes in integrating diverse data sources into a unified and usable format for analysis and decision-making purposes and responsible for designing and implementing data integration Solution Overviews.")
+                    st.subheader("Data Scientist: Tshepo Serumula")
+                    st.write("Specializes in integrating diverse data sources into a unified and usable format for analysis and decision-making purposes and responsible for designing and implementing data integration Solution Overviews. A tech-savvy professional with a strong background in software development. He leads our technical team and ensures innovative solutions are delivered to our clients. He is a skilled beatboxer, creating impressive beats using only his voice.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
@@ -748,7 +765,7 @@ def main():
                 st.image(Koketso)
                 with text_column:
                     st.subheader("Feature Engineer: Koketso Makofane")
-                    st.write("Responsible for identifying, designing, and extracting relevant features from raw data to improve model performance and predictive accuracy.")
+                    st.write("With a solid foundation in statistics, mathematics, and programming, koketso utilizes her expertise to analyze data and develop innovative feature engineering strategies.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
@@ -756,10 +773,8 @@ def main():
                 st.image(Katlego)
             with text_column:
                 st.subheader("Business Analyst: Katlego Mthunzi")
-                st.write("Responsible for bridging the gap between data analysis and business needs within an organization.")
+                st.write("A results-oriented marketing specialist with a strong background in digital marketing strategies. He excels in crafting effective marketing campaigns, leveraging her analytical skills to drive customer engagement and increase brand activity. A former professional athlete, whom is coach during weekends.")
 
-#---------------------------------------TSHEPO'S END OF EDA Section---------------------------------------------------------------------------------------
-
-
+#---------------------------------------TSHEPO'S END OF EDA Section----------------------------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     main()
