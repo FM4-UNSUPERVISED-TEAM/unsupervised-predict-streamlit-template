@@ -118,7 +118,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers","Contact Us"]
+    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us"]
     # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
@@ -645,7 +645,7 @@ def main():
         col2.header('Telephone')
         col2.write('(+27) 727910473')
         col3.header('Email')
-        col3.write('tshepoelifa238@gmail.com')
+        col3.write('simon.blanco@synergysoluion.com')
         
         
         # ---- CONTACT ----
@@ -678,6 +678,85 @@ def main():
 				width=None,
 				key=None,
 			)    
+#-----------------------------------------About Us Page---------------------------------------------------------------------------------------------------
+
+    if page_selection == "About Us":
+        
+        st.title("About Us")
+        
+        st.title("Meet the Synergy Solution Overviews Team")
+        # st.aboutUs("The Team Behind This Robust Work")
+        
+        st_lottie(
+				Meet_Team,
+				speed=1,
+				reverse=False,
+				loop=True,
+				quality="low",
+				#renderer="svg",
+				height=400,
+				width=400,
+				key=None,
+			)
+        
+        with st.container():
+            st.write("---")
+            st.write("##")
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Nare = Image.open("resources/imgs/Nare.jpg")
+                st.image(Nare)
+            with text_column:
+                st.subheader("Team leader and Project Manager: Nare Moloto")
+                st.write("Oversees the project, coordinates team members, and ensures project goals are achieved.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Mkhanyisi = Image.open("resources/imgs/MK.jpg")
+                st.image(Mkhanyisi)
+            with text_column:
+                st.subheader("Vice team leader and Data Analyst: Mkhanyisi Mlombile")
+                st.write("Assists the team leader, contributes to data analysis, and provides insights and recommendations.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Ghaalib = Image.open("resources/imgs/Ghaalib.jpg")
+                st.image(Ghaalib)
+            with text_column:
+                    st.subheader("Data Scientist: Ghaalib Van Der Ross")
+                    st.write("Applies advanced analytics, develops and trains machine learning models, and extracts insights for predictions.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Edna = Image.open("resources/imgs/Edna.jpg")
+                st.image(Edna)
+            with text_column:
+                st.subheader("Deadline Coordinator: Edna Kobo")
+                st.write("A professional responsible for managing and overseeing project deadlines to ensure timely completion of tasks and deliverables.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Tshepo = Image.open("resources/imgs/Tshepo.jpg")
+                st.image(Tshepo)
+                with text_column:
+                    st.subheader("Data Integration Engineer: Tshepo Serumula")
+                    st.write("Specializes in integrating diverse data sources into a unified and usable format for analysis and decision-making purposes and responsible for designing and implementing data integration Solution Overviews.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Koketso = Image.open("resources/imgs/Koketso.jpg")
+                st.image(Koketso)
+                with text_column:
+                    st.subheader("Feature Engineer: Koketso Makofane")
+                    st.write("Responsible for identifying, designing, and extracting relevant features from raw data to improve model performance and predictive accuracy.")
+        with st.container():
+            image_column, text_column = st.columns((1, 2))
+            with image_column:
+                Katlego = Image.open("resources/imgs/Katlego.jpg")
+                st.image(Katlego)
+            with text_column:
+                st.subheader("Business Analyst: Katlego Mthunzi")
+                st.write("Responsible for bridging the gap between data analysis and business needs within an organization.")
 
 #---------------------------------------TSHEPO'S END OF EDA Section---------------------------------------------------------------------------------------
 
