@@ -293,6 +293,11 @@ def main():
                 #st.write("This is how the Word Visual Above Was Generated.")
                 #st.write("1) The 'stopword' variable is a list of words that will be excluded from the word cloud. In this case, the stopwords are set to ['no genres', 'no', 'genres', 'genre', 'listed'].")
                 #st.write("WordCloud visualization showed the most prevalent genres (comedy and drama) and the effect. This provides a better idea of potential biases in the training set so we can eliminate them during our model constructing stage.")
+                st.write("From the bar graph depicted above, there is a clear indication that Drama is the most common genre preferred by the users from this movies dataset with comedy coming in the second place. The least preferred genres are Musical, Film-Noir and IMAX. From this data, this insinuates that users prefer movies that can make them laugh and have drama in them to movies which songs by the characters are interwoven into the narrative, sometimes accompanied by dancing (Musical Genre).")
+                st.write("Observations:")
+                st.write("Drama, Comedy, Action, Thriller and adventure are the top 5 genre in the dataset.")
+                st.write("Recommendations:")
+                st.write("Netflix should endeavor to match the order of genre of movies available in terms of quantity to the popularity of the genre so as to maximise the views, this in turn will maximise the revenue in films.")
                 
                 
             if bar_nav == 'Top 10 Genres':
@@ -341,7 +346,7 @@ def main():
 			    )
             
             bar_nav_list = ['The Distribution Of The Movies Ratings', 
-			'Tob Rated Movies',
+			'Top Rated Movies',
             'Number Of Ratings Per Movie',
             'Ratings Per Day Of The Week',
             'Ratings Per Movie Genres', 
@@ -360,27 +365,38 @@ def main():
                 st.write("Recommendations:")
                 st.write("Hence More movies are high quality perhaps people are watching movies that are recommended to them, either by their social groups or the recommender system itself.")
                 
-            if bar_nav == 'Tob Rated Movies':
-                st.subheader('Tob Rated Movies')
+            if bar_nav == 'Top Rated Movies':
+                st.subheader('Top Rated Movies')
                 st.write("We investigate how ratings, which range from 0 to 5, incremented by 0.5, are distributed in the movies data. So we will analyze the movie ratings based on how users rate different movies from 0 to 5.")
                 st.image('https://i.imgur.com/DkCDJSr.png', width=700)
                 st.write("Insights From The Figure.")
                 st.write("From the above plot we observe that the most poular movie of all time is Shawshank Redemption that was released in 1994 and that has an average rating of approximately 4.42.")
              
             if bar_nav == 'Number Of Ratings Per Movie':
-                st.subheader('Ratings Per Movie')
+                st.subheader('Distribution Of Number Ratings Per Movie')
+                st.write("The figure above shows the distribution of the number of ratings per movie from a DataFrame df_train. The clip function is used to limit the maximum count to 50, ensuring that the histogram does not have overly long bars due to outliers or high counts.")
                 st.write("We explore how many movies receive a number of ratings and visualize this in a plot. We group the 'rating' column in a DataFrame called 'df_train' by the 'movieId' column and counts the number of ratings for each movie. The count is then clipped at a maximum value of 50.")
                 st.image('https://i.imgur.com/YbXyZ1p.png', width=700)
+                st.write("Most movies have a relatively low number of ratings: The majority of movies fall within the lower count range, which indicates that most movies receive a limited number of ratings.")
+                st.write("Long-tail distribution: The plot shows a long-tail distribution, where there are a few movies with a significantly higher number of ratings compared to the rest. These are likely popular or blockbuster movies that have received more attention and reviews from users.")
+                st.write("Outliers: There might be a few outliers on the higher end of the count, representing movies with an unusually large number of ratings. These outliers could be influential or polarizing movies that garnered extensive attention from viewers.")
+                st.write(" User engagement: The plot can provide insights into user engagement with movies. Movies with higher ratings counts are likely to be more well-known and have received feedback from a broader user base.")
+                st.write("Data quality: The plot can also be used to identify potential data quality issues. For example, movies with very high or very low ratings counts could be outliers or misreported data points.")
                 
             if bar_nav == 'Ratings Per Day Of The Week':
                 st.subheader('Ratings Per Day Of The Week')
                 st.write("The number of ratings for the movies recieved per day of the week. We first convert a timestamp column to datetime format, extract the days of the week from the timestamp, and create a bar plot of the total number of ratings for each day of the week")
                 st.image('https://i.imgur.com/GFf2hnM.png', width=700)
-                st.write("We observe that ")
+                st.write("Observations:")
+                st.write("Weekend Peaks: There is a higher number of ratings during weekends (Saturday and Sunday). This could indicate that users are more likely to watch and rate movies during their leisure time, especially on weekends when they have more free time. ")
+                st.write("Movie Releases and Marketing: Spikes in ratings on specific days could be linked to movie releases and marketing strategies. For instance, if many movies are released on Fridays, there might be a higher number of ratings on Fridays and Saturdays.")
+                st.write("User Engagement on Specific Days: The ratings per day of the week can help identify which days users are most engaged with the platform. This insight can be useful for scheduling content updates, promotions, or site maintenance.")
                 
             if bar_nav == 'Ratings Per Movie Genres':
                 st.subheader('Ratings Per Movie Genres')
-                st.write("Here we wanted to check the ratings recieved by each movie genres in the dataset.")
+                #st.write("Here we wanted to check the ratings recieved by each movie genres in the dataset.")
+                st.write("Here we wanted to check the ratings recieved by each movie genres in the dataset by volume. We first merge the 'df_train' and 'df_movies' DataFrames based on the 'movieId' column and perform a group-by operation to calculate the average rating for each movie genre. We then create a bar plot of the top 15 movie genres based on the average rating.")
+                st.write("The average ratings for movie genres can provide useful insights into the popularity of the different genres. Those genres with high average ratings indicate a higher level of audience satisfaction and appreciation for movies in those particular genres and vice versa. This insight will help us understand the genres that resonate most positively with users.")
                 #st.image('https://i.imgur.com/4uLTKdA.png', width=700)
                 
                 bar_nav_list = ['Top 15 Most Popular Movie Genres by Rating', 
@@ -391,10 +407,16 @@ def main():
                 if bar_nav == 'Top 15 Most Popular Movie Genres by Rating':
                     st.subheader('Top 15 Most Popular Movie Genres by Rating')
                     st.image('https://i.imgur.com/4uLTKdA.png', width=700)
+                    st.write("Observations:")
+                    st.write("Most Explored Themes: The most popular genres could represent movie themes and concepts that are more explored in mainstream cinema. This include genres Animation|Crime|Fantasy|Mystery|Sci-Fi.")
+                    st.write("More Exposure: These genres might have extended exposure or distribution, leading to more ratings compared to less widely available genres.")
                     
                 if bar_nav == 'Top 15 Least Popular Movie Genres by Rating':
                     st.subheader('Top 15 Most Popular Movie Genres by Rating')
                     st.image('https://i.imgur.com/IByrt4V.png', width=700)
+                    st.write("Observations:")
+                    st.write("Less Explored Themes: The least popular genres could represent movie themes and concepts that are less explored in mainstream cinema. This include genres like Drama|Horror|Western.")
+                    st.write("Limited Exposure: These genres might have limited exposure or distribution, leading to fewer ratings compared to more widely available genres.")
                     
         if visual_options_selection == 'Top Users':
             st_lottie(
@@ -415,6 +437,8 @@ def main():
                 st.subheader('Top Users By Number Of Ratings')
                 st.write("Examining the top users using the number of ratings dataset. We create a bar plot of the top 20 users by the number of ratings they have given.")
                 st.image('https://i.imgur.com/Nlnp8VL.png', width=700)
+                st.write("Observations:")
+                st.write("User Engagement: The chart shows which users are the most active and engaged on the platform, providing the highest number of ratings. These users could be key influencers or frequent users who contribute significantly to the platform's activity.")
                 
         
         if visual_options_selection == 'Movies Releases Per Year':
@@ -475,11 +499,16 @@ def main():
                 st.subheader('Top 10 Popular Actors')
                 st.write("Here we looked at the top actors based on the number of movies they have acted on.")
                 st.image('https://i.imgur.com/lH56j9N.png', width=700)
+                st.write("Observations:")
+                st.write("Popularity and Demand: By identifying the top actors by volume, base on the data provided, is an indication of the actors popularity and demand within the film industry. Those actors cast in a large number of movies are likely to have a significant fan base and appeal to audiences and filmmakers.")
+                st.write("Experience and Versatility: Actors cast in large number of movies demonstrate their experience and versatility in portraying different roles and genres. These actors clearly possess the necessary skills and range to adapt to various characters and storytelling styles.")
+                st.write("Movie Success: The presence of top actors may have an impact on the success of those films. Their established fan base and reputation can attract viewers and contribute to the box office performance or viewership of the movies regardless on whether the movies is highly rated or not.")
                 
             if bar_nav == 'Top 10 Most Popular Movie Directors':
                 st.subheader('Top 10 Most Popular Movie Directors')
                 st.write("Here we looked at the top directors based on the number of movies they have directed.")
                 st.image('https://i.imgur.com/LA7pP7y.png', width=700)
+                st.write("By identifying the most commonly used directors is a clear indication of their popularity, skill and talent within the film industry. Much like the top actors, the presence of top directors will also have an impact on the success of the film. With an established reputation they can attract viewers and contribute to the box office performance or viewership of the movies.")
                 
             if bar_nav == 'Most Common Words In The IMBD Dataset':
                 st.subheader('Most Common Words In The IMBD Dataset')
@@ -503,6 +532,10 @@ def main():
             if bar_nav == 'Top 10 Longest Movies From The Dataset':
                 st.subheader('Top 10 Longest Movies From The Dataset')
                 st.image('https://i.imgur.com/akScXGh.png', width=700)
+                st.write("Observations:")
+                st.write("Epic Productions: The presence of extremely long movies among the top 10 suggests that epic and ambitious productions have been popular or significant in the dataset with Taken(2002) toping the chart as the longest movie from the dataset.")
+                st.write("Filmmaking Styles: Long movies often indicate that filmmakers are exploring complex narratives, in-depth character development, or immersive storytelling techniques.")
+                
                 
         if visual_options_selection == 'Movies Budget':
             st_lottie(
@@ -517,18 +550,29 @@ def main():
 			key=None,
 			)
 
-            bar_nav_list = ['Sum of Total Movie budget per year', 'Top 20 Movies by Budget']
+            bar_nav_list = ['Sum Of Total Movie Budget Per Year', 'Top 20 Movies By Budget', "Average Budget Per Genre"]
             bar_nav = st.radio('I would like to view the...', bar_nav_list)
             
-            if bar_nav == 'Sum of Total Movie budget per year':
-                st.subheader('Sum of Total Movie budget per year')
+            if bar_nav == 'Sum Of Total Movie Budget Per Year':
+                st.subheader('Sum Of Total Movie Budget Per Year')
                 st.image('https://i.imgur.com/InPkVi0.png', width=700)
+                st.write("It is clear that the data in terms of the budget of the movies is missing a lot of entries from the year 2013 to 2019. However, it is clear that there is an increase in the budget used to produce movies over the years.")
                 
-            if bar_nav == 'Top 20 Movies by Budget':
-                st.subheader('Top 20 Movies by Budget')
+            if bar_nav == 'Top 20 Movies By Budget':
+                st.subheader('Top 20 Movies By Budget')
+                st.write("Despite the significant number of missing data from the budget column of the merged_df dataset, we are still provided with a view of high budgets provided for certain movies. If we were to have additional information which provides the revenue for each movie there is scope for extremely valuable insights such as:")
                 st.image('https://i.imgur.com/lAKh39D.png', width=700)
-#-----------------------------------------------------------------------------------------------------------------------------------------------------
-#-----------------------------------------------------------Raw Data----------------------------------------------------------------------------------
+                st.write("Profitability: If we compare the revenue-to-budget ratio across different movies we can identify those movies that have been particularly profitable and those who have failed to generate any profit at all. Movies with a high ratio indicate that they have exceeded revenue expectations, therefore, providing profits to the studios and production companies involved.")
+                
+            if bar_nav == "Average Budget per Genre":
+                st.header("Average Budget per Genre")
+                st.image('https://i.imgur.com/oXiA633.png', width=700)
+                st.write("The visual above shows the average budget per movie genre. This provides valuable insights into how budgets are distributed across different genres.")
+                st.write("Observations:")
+                st.write("Genre Budget Comparison: The bar chart allows the compare of the average budgets of different genres directly. We can identify genres with higher budgets and those with lower budgets, giving us an idea of which genres tend to require more significant investments, which in this case is th IMAX followed by Adventure.")
+                st.write("Popular vs. Expensive Genres: By comparing the average budgets with genre popularity, we might identify whether there is a correlation between a genre's popularity and its budget. Some genres may have high budgets due to their appeal to a broader audience, while others might have relatively high budgets despite being less popular. From the 'Most Popular Genre' figure at the top, we showed that Drama is the most popular genre. The insights drawn was that Dramatic movies are cheaper to produce. This is supported by this 'Average Budget per Genre' figure where Drama is shown to have a very low budget.")
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------Raw Data-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         if visual_options_selection == "Raw Data":
             st.title("Raw Data")
             st.write("This page was designed to help data analysts to get a better understanding of the data. It focuses specifically on the movies and ratings datasets.")
