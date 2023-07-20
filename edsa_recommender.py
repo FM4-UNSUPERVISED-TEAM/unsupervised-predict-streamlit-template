@@ -61,7 +61,6 @@ from streamlit_player import st_player
 from utils.data_loader import load_movie_titles
 from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
-# import functions.comments as coms
 
 #---------------------------------------Loading Data---------------------------------------------------------------------------------------------------------------
 # Data Loading
@@ -612,38 +611,39 @@ def main():
     # embed a youtube video
     if page_selection == "Trailers":
 
+        st.header("Top 10 movies")
         year = st.slider('Select Release Year Period', 2023, 2018, 2023)
         st.write('You selected movies released between', str(2018), 'and', str(year))
         if year == 2023:
             with st.expander('Top 10 Best Movies 2023'):
                 st_player('https://www.youtube.com/watch?v=YQZJinEtFlM')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2023')
+        
         if year >= 2022:
             with st.expander('Top 10 Best Movies 2022'):
                 st_player('https://www.youtube.com/watch?v=emrUk0cW3O4')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2022')
+                
         if year >= 2021:
             with st.expander('Top 10 Best Movies 2021'):
                 st_player('https://www.youtube.com/watch?v=_wRoljeeF5k')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2021')
+                
         if year >= 2020:
             with st.expander('Top 10 Best Movies 2020'):
                 st_player('https://www.youtube.com/watch?v=K7AHRF9X1i8')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2020')
+                
         if year >= 2019:
             with st.expander('Top 10 Best Movies 2019'):
                 st_player('https://youtu.be/48NL3N6KMFo?t=9')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2019')
+                
         if year >= 2018:
             with st.expander('Top 10 Best Movies 2018'):
                 st_player('https://youtu.be/FkUtWUy77fQ?t=9')
                 st.write('**Which movies did you like?**')
-                # coms.commenter('Top 10 Best Movies 2018')
+                
 
     #-----------------------------------------------CONTACT US----------------------------------------------------------------------------
     if page_selection == 'Contact Us':
@@ -724,7 +724,7 @@ def main():
                 st.image(Nare)
             with text_column:
                 st.subheader("Chief Executive Officer: Nare Moloto")
-                st.write("A visionary leader with extensive experience in the industry. She is passionate about driving the company's growth and ensuring its success. After the work dust has settled, she is a gymnastic coach.")
+                st.write("A visionary leader with extensive experience in the industry. She is passionate about driving the company's growth and ensuring its success. Nare is a machine learning whiz who can build powerful models with ease. Apart from her coding prowess, she has a deep passion for films and after the work dust has settled, she is a gymnastic coach.")
                 
         with st.container():
             image_column, text_column = st.columns((1, 2))
@@ -765,7 +765,7 @@ def main():
                 st.image(Koketso)
                 with text_column:
                     st.subheader("Feature Engineer: Koketso Makofane")
-                    st.write("With a solid foundation in statistics, mathematics, and programming, koketso utilizes her expertise to analyze data and develop innovative feature engineering strategies.")
+                    st.write("With a solid foundation in statistics, mathematics, and programming, koketso utilizes her expertise to analyze data and develop innovative feature engineering strategies. Off the clock, she immerses herself in the world of books. Koketso is an avid reader who devours literature from various genres.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
             with image_column:
