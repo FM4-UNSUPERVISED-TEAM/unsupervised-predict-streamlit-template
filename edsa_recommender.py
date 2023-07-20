@@ -117,7 +117,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Home", "Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us",]
+    page_options = ["Recommender System", "Insights", "Solution Overview","Trailers", "About Us", "Contact Us",]
     # page_selection = f'{menu_id}'
 
     # -------------------------------------------------------------------
@@ -239,10 +239,10 @@ def main():
     # or to provide your business pitch.
 
 # ----------------------------------------------HOME PAGE---------------------------------------------------------------------------------------------------
-    if page_selection == 'Home':
-        # Header contents
-        st.write('# Welcome to MovieWhiz')
-        st.image('resources/imgs/1MovieWhiz.png')
+    # if page_selection == 'Home':
+    #     # Header contents
+    #     st.write('# Welcome to MovieWhiz')
+    #     st.image('resources/imgs/1MovieWhiz.png')
 
 # ----------------------------------------------EDA SECTION---------------------------------------------------------------------------------------------------
    	# Building out the Visualizations page
