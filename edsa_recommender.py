@@ -107,6 +107,7 @@ Calender = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_mqzp4dz
 Actors = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_51ja6AIG9j.json")
 Timer = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_ya9vcglm.json")
 Budget = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_l5o1uey5.json")
+Performance = load_lottieurl("https://lottie.host/a3be8d01-63d0-4b44-b0fa-820597e7287b/E2WCCMuj8o.json")
 
 local_css("resources/style/style.css")
 
@@ -267,13 +268,28 @@ def main():
 			)
 #------------------------------------------------------------------------------------------------------------------------------------------------
         if visual_options_selection == "Model Performance":
+            
+            if visual_options_selection == "Model Performance":
+                st.header("Model Performance Evaluation")
+                st_lottie(
+                    Performance,
+				    speed=1,
+				    reverse=False,
+				    loop=True,
+				    quality="low",
+				    #renderer="svg",
+				    height=400,
+				    width=600,
+				    key=None,
+			    )
+            
             per_listed = ['Model Performance']
             per_list = st.selectbox('I would like to view the...', per_listed)
             
             if per_list == 'Model Performance':
-                st.subheader('RMSE scores of the various models used')
+                st.subheader('RMSE Scores Of The Various Models Used')
                 st.image('https://i.imgur.com/8cHPlxM.png', width=730)
-                st.write("We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.78428  we can conclude that the algorithm implemented for our app is very good at movie recommendations.We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.78428  we can conclude that the algorithm implemented for our app is very good at movie recommendations.")
+                st.write("We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.779  we can conclude that the algorithm implemented for our app is very good at movie recommendations.We implemented a few models for Both the collaborative and content-based filtering to find a model that gives us the best rmse score which is a representation of our model performance. The model with the best rmse score was the singular value decomposition (SVD). The SVD is very good at noise detection and does this by reducing the dimensions of a matrix in order to make certain subsequent matrix calculations simpler, which is why it gave better RSME score. By the Implementation of Singular Value Decomposition, which returned a very good score of 0.779  we can conclude that the algorithm implemented for our app is very good at movie recommendations.")
 
 #------------------------------------------------------------------------------------------------------------------------------------------------
 # The 'Movies Genres' Page   
@@ -695,7 +711,7 @@ def main():
         
         col1, col2, col3 = st.columns(3)
         col1.header('Location')
-        col1.write('523 De Kock ST, Pretoria 2001')
+        col1.write('523 De Kock ST, Pretoria, 0002')
         col2.header('Telephone')
         col2.write('(+27) 727910473')
         col3.header('Email')
@@ -736,7 +752,7 @@ def main():
         def main():
             st.title("Directions To The Main Office")
             google_maps_embed_code = """<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.4376091292775!2d28.212081211194214!3d-25.756105445780477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95618dd4b32c81%3A0x86adf140930befdb!2s523%20De%20Kock%20St%2C%20Sunnyside%2C%20Pretoria%2C%200002!5e0!3m2!1sen!2sza!4v1689921462377!5m2!1sen!2sza" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"""
-            st.components.v1.html(google_maps_embed_code, width=800, height=600)
+            st.components.v1.html(google_maps_embed_code, width=1400, height=400)
         #call the function
         map = main()
         #st.write(map)
