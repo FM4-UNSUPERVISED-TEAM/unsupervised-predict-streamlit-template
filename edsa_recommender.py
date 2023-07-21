@@ -762,6 +762,11 @@ def main():
 
     if page_selection == "About Us":
         
+        #-------------------------
+        
+
+        #--------------------------
+        
         st.title("About Us")
         
         st.markdown("We are a company that is dedicated to providing advanced analytics solutions. We aim not only to leverage advanced analytics, artificial intelligence, and machine learning, Our target is to also transform industries, drive innovation, and shape a data-driven future")
