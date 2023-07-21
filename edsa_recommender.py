@@ -731,7 +731,17 @@ def main():
 				height=None,
 				width=None,
 				key=None,
-			)    
+			)
+        #Loading the google maps
+        def main():
+            st.title("Directions To The Main Office")
+            google_maps_embed_code = """<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.4376091292775!2d28.212081211194214!3d-25.756105445780477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95618dd4b32c81%3A0x86adf140930befdb!2s523%20De%20Kock%20St%2C%20Sunnyside%2C%20Pretoria%2C%200002!5e0!3m2!1sen!2sza!4v1689921462377!5m2!1sen!2sza" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"""
+            st.components.v1.html(google_maps_embed_code, width=800, height=600)
+        #call the function
+        map = main()
+        #st.write(map)
+
+        
 #-----------------------------------------About Us Page---------------------------------------------------------------------------------------------------
 
     if page_selection == "About Us":
