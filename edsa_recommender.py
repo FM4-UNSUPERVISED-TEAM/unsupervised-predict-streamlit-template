@@ -762,10 +762,9 @@ def main():
 
     if page_selection == "About Us":
         
-        #-------------------------
+        #-------------------------------------
         
-
-        #--------------------------
+        #------------------------------------
         
         st.title("About Us")
         
@@ -807,7 +806,7 @@ def main():
                 Mkhanyisi = Image.open("resources/imgs/MK.jpg")
                 st.image(Mkhanyisi)
             with text_column:
-                st.subheader("Data Scientist: Mkhanyisi Mlombile")
+                st.subheader("Data Analyst: Mkhanyisi Mlombile")
                 st.write("Mkhanyisi's passion for data science goes beyond his professional work. In his free time, he enjoys participating in Kaggle competitions, where he applies his skills to real-world datasets and collaborates with other data scientists worldwide. He is also an avid reader of data science literature and actively contributes to the data science community by sharing his knowledge. The same dedication he puts in when preparing his mouth watering dishes. A professional chef too.")
         with st.container():
             image_column, text_column = st.columns((1, 2))
