@@ -108,6 +108,7 @@ Actors = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_51ja6AIG9
 Timer = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_ya9vcglm.json")
 Budget = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_l5o1uey5.json")
 Performance = load_lottieurl("https://lottie.host/a3be8d01-63d0-4b44-b0fa-820597e7287b/E2WCCMuj8o.json")
+star = load_lottieurl("https://lottie.host/b8d1b7e4-452b-42ba-8afe-0942e0c7a635/DDMa55hCg6.json")
 
 local_css("resources/style/style.css")
 
@@ -770,7 +771,7 @@ def main():
         
         st.markdown("We are a company that is dedicated to providing advanced analytics solutions. We aim not only to leverage advanced analytics, artificial intelligence, and machine learning, Our target is to also transform industries, drive innovation, and shape a data-driven future")
         st.markdown("We are committed to staying at the forefront advancements in data science as we work closely with our clients, to understand their unique challenges and goals.")
-
+        
         
         st.title("Meet The Synergy Solution Team")
         # st.aboutUs("The Team Behind This Robust Work")
