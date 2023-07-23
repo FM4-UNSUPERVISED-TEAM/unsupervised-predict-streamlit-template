@@ -52,6 +52,7 @@ def movie_data(movie):
 
     # Below function finds nearest neighbors and returns recommended movie list using cosine similarity between movies
 # @st.cache(show_spinner=False, suppress_st_warning=True)
+@st.cache_data(show_spinner=False)
 # !! DO NOT CHANGE THIS FUNCTION SIGNATURE !!
 # You are, however, encouraged to change its content.
 def collab_model(movie_list,top_n=10):

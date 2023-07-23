@@ -799,7 +799,7 @@ def main():
                 st.image(Nare)
             with text_column:
                 st.subheader("Chief Executive Officer: Nare Moloto")
-                st.write("A visionary leader with extensive experience in the industry. She is passionate about driving the company's growth and ensuring its success. Nare is a machine learning whiz who can build powerful models with ease. Apart from her coding prowess, she has a deep passion for films and after the work dust has settled, she is a gymnastic coach.")
+                st.write("A visionary leader with extensive experience in the industry. She is passionate about driving the company's growth and ensuring its success. Nare is a machine learning whiz who can build powerful models with ease. Apart from her coding prowers, she has a deep passion for films and after the work dust has settled, she is a gymnastic coach.")
                 
         with st.container():
             image_column, text_column = st.columns((1, 2))
@@ -850,6 +850,6 @@ def main():
                 st.subheader("Business Analyst: Katlego Mthunzi")
                 st.write("A results-oriented marketing specialist with a strong background in digital marketing strategies. He excels in crafting effective marketing campaigns, leveraging her analytical skills to drive customer engagement and increase brand activity. A former professional athlete, whom is coach during weekends.")
 
-#---------------------------------------TSHEPO'S END OF EDA Section----------------------------------------------------------------------------------------------------------------------
+#---------------------------------------END OF EDA Section----------------------------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     main()
